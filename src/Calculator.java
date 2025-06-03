@@ -36,7 +36,7 @@ public class Calculator {
 
         // Display
         displayLabel.setLayout(new BorderLayout());
-        displayLabel.setBackground(Color.BLACK);
+        displayLabel.setBackground(new Color(50,50,50));
         displayLabel.setForeground(Color.WHITE);
         displayLabel.setFont(new Font("Arial", Font.PLAIN, 80));
         displayLabel.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -49,18 +49,32 @@ public class Calculator {
 
         // Buttons
         buttonPanel.setLayout(new GridLayout(5,4));
-        buttonPanel.setBackground(Color.GRAY);
+        buttonPanel.setBackground(new Color(50, 50, 50));
         frame.add(buttonPanel,BorderLayout.CENTER);
 
         for (String buttonValue : buttonValues) {
             JButton button = new JButton(buttonValue);
             button.setFont(new Font("Arial", Font.PLAIN, 30));
             button.setFocusable(false);
-            button.setBorderPainted(false);
-            buttonPanel.add(button);
-            if (buttonValue.equals(" ")) {
+
+            if (Arrays.asList(rightOperators).contains(buttonValue)) {
+                button.setBackground(new Color(255, 165, 0));
+                button.setForeground(Color.WHITE);
+            } else if (Arrays.asList(topOperators).contains(buttonValue)) {
+                button.setBackground(new Color(100, 100, 100));
+                button.setForeground(Color.WHITE);
+            } else if (buttonValue.equals("0")) {
+                button.setBackground(new Color(70, 70, 70));
+                button.setForeground(Color.WHITE);
+            } else if (!buttonValue.equals(" ")) {
+                button.setBackground(new Color(70, 70, 70));
+                button.setForeground(Color.WHITE);
+            } else {
                 button.setVisible(false);
             }
+            button.setOpaque(true);
+            button.setBorderPainted(false);
+            buttonPanel.add(button);
             button.addActionListener(new ButtonListener());
         }
     }
