@@ -56,19 +56,14 @@ public class Calculator {
             JButton button = new JButton(buttonValue);
             button.setFont(new Font("Arial", Font.PLAIN, 30));
             button.setFocusable(false);
+            button.setForeground(Color.WHITE);
 
             if (Arrays.asList(rightOperators).contains(buttonValue)) {
                 button.setBackground(new Color(255, 165, 0));
-                button.setForeground(Color.WHITE);
             } else if (Arrays.asList(topOperators).contains(buttonValue)) {
                 button.setBackground(new Color(100, 100, 100));
-                button.setForeground(Color.WHITE);
-            } else if (buttonValue.equals("0")) {
-                button.setBackground(new Color(70, 70, 70));
-                button.setForeground(Color.WHITE);
             } else if (!buttonValue.equals(" ")) {
                 button.setBackground(new Color(70, 70, 70));
-                button.setForeground(Color.WHITE);
             } else {
                 button.setVisible(false);
             }
